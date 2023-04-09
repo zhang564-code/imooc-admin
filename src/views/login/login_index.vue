@@ -7,9 +7,9 @@
       <!-- username -->
       <el-form-item>
         <span class="svg-container">
-          <el-icon>
-            <avatar />
-          </el-icon>
+          <span class="svg-container">
+            <svgIcon icon="https://res.lgdsunday.club/user.svg"></svgIcon>
+          </span>
         </span>
         <el-input placeholder="username" name="username" type="text"></el-input>
       </el-form-item>
@@ -37,6 +37,7 @@
 
 <script setup>
 import { Avatar } from '@element-plus/icons'
+import svgIcon from '@/components/SvgIcon/SvgIcon_index.vue'
 import {} from 'vue'
 </script>
 

@@ -24,11 +24,14 @@
         <el-input
           placeholder="password"
           name="password"
+          :type="passwordType"
           v-model="loginForm.password"
         ></el-input>
         <span class="show-pwd">
-          <span class="svg-container">
-            <svgIcon icon="eye"></svgIcon>
+          <span class="svg-container" @click="onChangePwdType">
+            <svgIcon
+              :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+            ></svgIcon>
           </span>
         </span>
       </el-form-item>
@@ -46,7 +49,7 @@ import svgIcon from '@/components/SvgIcon/SvgIcon_index.vue'
 import { validatePassword } from './rules'
 //  数据源
 const loginForm = ref({
-  username: 'admin',
+  username: 'super-admin',
   password: '123456'
 })
 //  验证规则
@@ -66,6 +69,18 @@ const loginRules = ref({
     }
   ]
 })
+
+//  处理密码框明文密文显示
+const passwordType = ref('password')
+//  template中绑定的方法，直接声明即可
+const onChangePwdType = () => {
+  //  使用ref声明的数据需要用.value，但是在template中使用时不用加value
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -132,7 +147,6 @@ $cursor: #fff;
   .show-pwd {
     position: absolute;
     right: 10px;
-    top: 7px;
     font-size: 16px;
     color: $dark_gray;
     cursor: pointer;

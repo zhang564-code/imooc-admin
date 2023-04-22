@@ -59,7 +59,7 @@ import { validatePassword } from './rules'
 import { useStore } from 'vuex'
 //  数据源
 const loginForm = ref({
-  username: 'super-admin',
+  username: 'admin',
   password: '123456'
 })
 //  验证规则
@@ -98,7 +98,6 @@ const store = useStore()
 const loginFormRef = ref(null)
 const handlerLogin = () => {
   //  1.进行表单校验
-  console.log(loginFormRef.value)
   loginFormRef.value.validate((valid) => {
     if (!valid) return
     //  2.触发校验动作

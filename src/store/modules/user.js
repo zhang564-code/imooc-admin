@@ -6,6 +6,9 @@ export default {
   state: () => ({}),
   mutations: {},
   actions: {
+    /**
+     * 登录 2.登录请求的动作
+     */
     login(context, userInfo) {
       const { username, password } = userInfo
       return new Promise((resolve, reject) => {
